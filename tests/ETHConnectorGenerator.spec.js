@@ -1,14 +1,14 @@
 'use strict';
-const utils = require("./utils");
+const utils = require(__dirname+"utils");
 const fs = require("fs");
 const assert = require('chai').assert;
 
 let schema = [
     {
         className: "ETHConnectorGenerator",
-        classPath: "../ETHConnectorGenerator",
+        classPath: __dirname+"/../ETHConnectorGenerator",
         call_instance(cls){
-            let generator = new cls("./tests/samples/test_config.json");
+            let generator = new cls(__dirname+"/tests/samples/test_config.json");
             generator.init();
             generator.process();
             return generator;
@@ -17,7 +17,7 @@ let schema = [
             it(`Generated ETH connector controller output class matches the sample output file contents`, () => {
                 assert.equal(
                     instance.controller_class_code,
-                    fs.readFileSync("./tests/samples/eth_connector/Controller.js"),
+                    fs.readFileSync(__dirname+"/tests/samples/eth_connector/Controller.js"),
                 );
             });
         },

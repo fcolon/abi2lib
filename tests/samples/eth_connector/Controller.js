@@ -1,4 +1,4 @@
-let Connector = require("./GenericETHConnector");
+let Connector = require(__dirname+"/GenericETHConnector");
 let fs = require("fs");
 
 /**
@@ -12,8 +12,8 @@ class Controller{
     * @description initializes the connector, which will interact with SmartContract via web3
     * */
     constructor(){
-        this.config = JSON.parse(fs.readFileSync("./config.json"));
-        this.connector = new Connector("./contract.json", this.config);
+        this.config = JSON.parse(fs.readFileSync(__dirname+"/config.json"));
+        this.connector = new Connector(__dirname+"/contract.json", this.config);
     }
 
     /**

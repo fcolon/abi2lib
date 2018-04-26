@@ -5,7 +5,7 @@ let path = require("path");
 const program = require('commander');
 const package = JSON.parse(fs.readFileSync(path.resolve(__dirname, './package.json')));
 
-const ETHConnectorGenerator = require('./ETHConnectorGenerator');
+const ETHConnectorGenerator = require(__dirname+'/ETHConnectorGenerator');
 
 program
     .version(package.version)
